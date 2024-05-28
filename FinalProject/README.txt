@@ -44,3 +44,6 @@ AS ADMIN YOU CAN:
     The endpoints were tested on Postman, check it out:
     https://www.postman.com/payload-geoscientist-16374152/workspace/final-project
     Don't forget to use token whenever is necessary.
+    The deploy by railway:
+    deployecommerce-production.up.railway.app 
+    
