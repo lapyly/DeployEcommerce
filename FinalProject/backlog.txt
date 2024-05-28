@@ -1,0 +1,67 @@
+non-functionals
+* Write scripts: 
+        "start": "nodemon src/index.js",
+        "dev": "node src/index.js",
+        "test": "mocha --timeout 10000 --exit"
+* Install:
+    Dev: express dotenv body-parser cookie-parser -D nodemon 
+    Database: mongoose connect-mongo 
+    Auth: bcrypt jsonwebtoken passport passport-jwt uuid
+    Mailing: nodemailer
+    Testing: -D mocha chai supertest
+    Logging: winston  
+    Views: express-handlebars cors
+    Mock: @faker-js/faker
+    Documentation: swagger-jsdoc swagger-ui-express
+* Make .env and .example.env
+    MONGOURL
+        PORT=8080
+        URLDB=mongodb+srv://lu-admin:lu-pass@cluster0.8tspoez.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        # NODE_ENV=dev
+        EMAIL_IDENTIFIER=lalatasociedad@gmail.com
+        EMAIL_PASSWORD=wrhrhlsjbrxeadii
+        JWTSECRET=supercalifragilisticoespialidos0
+        JWTLINKSECRET=-itsfine-imtotallyfine
+* Make .gitignore
+    node_modules
+    .env
+* Manage the errors.
+* Manage the status.
+
+functionals
+* Auth
+    *As a visitor I want to register so I can buy.
+            -User recive an email with a confirmation.
+            -Make a DTO with mail, password, role, name, lastname, date of creation.
+            -Store in db with mongoDB.
+    *As a user I want to login.
+            -Check email and password.
+            -Save token in cookie.
+    *As user I want to restore my password so I can access.
+            -User recive an email with a link to restore the password.
+            -The link expire in an hour.
+            -If the link expire, must have a view to resend the email.
+            -The user can´t use the same password.
+    *As user I want to have the session open while I am in the page.
+            -Need jwt token.
+    *As admin I want to change the user role of another person in sales.
+
+* Stock
+    *As a sales person I want to create product so I can sale it.
+            -The register schema must have sales as new role.
+            -The sales can´t put their own product in the cart.
+    *As sales I want to delete products so I don´t sale them.
+            -Make a "owner" field in product schema with the sales mail.
+            -The sales only can delete their own products.
+    *As admin I want to delete products so I have control in the app.
+            -The admin can delete all products even if they are no owners.
+
+* Cart
+    *As user I want to add products to my cart.
+            -Modify the quantity of the products in my cart.
+    *As user I want to delete products of my cart.
+    *As user I want to buy products.
+
+* Chat
+    *As user I want to chat with a sales person.
+            -Need token of auth.

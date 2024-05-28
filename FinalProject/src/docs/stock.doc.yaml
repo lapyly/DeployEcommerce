@@ -1,0 +1,120 @@
+/new-product:
+  post:
+   summary: "Create new producto"
+   description: "Endpoint to create a new product in the aplication"
+   requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+              description: "Product title"
+            description:
+              type: string
+              description: "Product description"
+            price:
+               type: number
+               description: "Product price"
+            stock:
+              type: number
+              description: "Product stock"
+            category:
+              type: string
+              description: "Product category"
+            status:
+              type: boolean
+              description: "Product status: true or false"
+            code:
+              type: string
+              description: "Product code"
+  responses:
+    201:
+      description: "Product has been created"
+    400:
+      description: "Error by data entry"
+    500:
+      description: "Internal error"
+
+/products:
+  get:
+    summary: "Get the list of products"
+    description: "Endpoint to get all the products"
+    parameters:
+      name: id
+      in: path
+      require: true
+    responses:
+      201:
+        description: "List of products."
+      500:
+        description: "Internal error"
+
+
+/update-product/{pid}:
+  patch:
+    summary: "Update product"
+    description: "Endpoint to update a product in the aplication"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: "Product ID"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+                description: "Product title"
+              description:
+                type: string
+                description: "Product description"
+              price:
+                type: number
+                description: "Product price"
+              stock:
+                type: number
+                description: "Product stock"
+              category:
+                type: string
+                description: "Product category"
+              status:
+                type: boolean
+                description: "Product status: true or false"
+              code:
+                type: string
+                description: "Product code"
+    responses:
+      201:
+        description: "Product has been updated"
+      400:
+        description: "Error by data entry"
+      500:
+        description: "Internal error"
+
+/delete-products/{id}:
+  delete:
+    summary: "Delete product by ID"
+    description: "Endpoint to delete a product"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: "Product ID"
+    responses:
+      204:
+        description: "The product has been deleted"
+      404:
+        description: "Product not found"
+      500:
+        description: "Internal error"

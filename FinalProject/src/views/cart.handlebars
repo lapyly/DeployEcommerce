@@ -1,0 +1,18 @@
+<div class="cart-container">
+    <p class="cart-header">Check your cart:</p>
+    {{#if hasCart}}
+        {{#each product}}
+            <div class="product-item">
+                <p class="product-name">{{this.name}}</p>
+                <p class="product-quantity">{{this.quantity}}</p> 
+                <div class="product-buttons">
+                    <button class="btn add" name="add">+</button>
+                    <button class="btn less" name="less">-</button>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p class="no-product">Add product to your cart ;D</p>
+    {{/if}}
+</div>
+<script src="../public/js/cart.public.js"></script>

@@ -1,0 +1,2 @@
+[32minfo[39m: POST-/api/auth/login/PostmanRuntime/7.39.0-Wed, 22 May 2024 14:24:45 GMT {"timestamp":"2024-05-22T14:24:45.538Z"}
+[31merror[39m: Error login user. {"error":"Cannot read properties of undefined (reading 'password')","timestamp":"2024-05-22T14:24:45.547Z"}

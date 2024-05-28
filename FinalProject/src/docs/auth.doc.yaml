@@ -1,0 +1,88 @@
+openapi: "3.0.3"
+info:
+  title: API Users
+  version: "1.0"
+path:
+  /api/auth/register:
+    post:
+     summary: Creat a new user.
+     description: Endpoint to register a new user.
+     tags:
+      - auth
+     responses:
+        200:
+          description: "New user has been create."
+        404:
+          description: "Lack of data, incorrect length or incorrect type data."
+        500:
+          description: "Internal error."
+    components:
+      schemas:
+        Users:
+          type: object
+          properties:
+            first_name: String
+            last_name: String
+            email: String, must be unique
+            age: Number
+            password: String, must be hash
+            cart: String,
+            role: String, can be "user", "admin", "sales". User is default
+    
+  /api/auth/login:
+    post:
+      summary: login to the app
+      tags:
+      - auth
+      responses:
+        200:
+          description: "Login succesfull."
+        404:
+          description: "User not found or password is incorrect."
+        500:
+          description: "Internal error."
+        
+
+  /api/auth/profile:
+    get:
+     summary: get the user profile
+     tags:
+      - auth
+     responses:
+        200:
+          description: "List of profiles."
+        404:
+          description: "No auth."
+        500:
+          description: "Internal error."
+        
+
+  /api/auth/forgot-password:
+    post:
+      summary: generate link to reset password
+      tags:
+        - auth
+      responses:
+          200:
+            description: "Mail to restore password has been send."
+          404:
+            description: "Lack of data email."
+          500:
+            description: "Internal error."
+        
+  /api/auth/new-password:
+    patch:
+      summary: reset user password.
+      description: Endpoint to reset user password.
+      parameters:
+        mail: email
+        password: password
+      tags:
+        - auth
+      responses:
+        200:
+          description: "New password has been reset."
+        404:
+          description: "Link expired, lack of data and same password."
+        500:
+          description: "Internal error."

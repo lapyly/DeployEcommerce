@@ -1,0 +1,74 @@
+/cart:
+  post:
+   summary: "Create new cart"
+   description: "Endpoint to create a new cart in the aplication"
+   requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            product:
+              type: string
+              description: "Product"
+            quantity:
+              type: number
+              description: "Product quantity"
+  responses:
+    201:
+      description: "Cart has been created"
+    400:
+      description: "Error by data entry"
+    500:
+      description: "Internal error"
+
+/cart/{cid}:
+  get:
+    summary: "Get a cart by ID"
+    description: "Endpoint to get a cart."
+    parameters:
+      name: id
+      in: path
+      require: true
+    responses:
+      201:
+        description: "Cart."
+      500:
+        description: "Internal error"
+
+
+/cart/{cid}/product/{pid}:
+  put:
+    summary: "Update product in cart"
+    description: "Endpoint to update a product in the cart"
+    parameters:
+      - name: id
+        in: path
+        required: true
+    responses:
+      201:
+        description: "Cart has been updated"
+      400:
+        description: "Error by data entry"
+      500:
+        description: "Internal error"
+
+/{cid}:
+  delete:
+    summary: "Delete cart by ID"
+    description: "Endpoint to delete a cart"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: "Product ID"
+    responses:
+      204:
+        description: "The cart has been deleted"
+      404:
+        description: "Product not found"
+      500:
+        description: "Internal error"
